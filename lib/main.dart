@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:components/pages/home_temp.dart';
+
 void main() => runApp(MyApp());
 
 
@@ -11,11 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Components App',
       home: Scaffold(
         appBar: AppBar(title: Text('Components')),
-        body: Center(
-          child: Container(
-            child: Text('Hello world'),
-          ),
-        ),
+        body: HomePageTemp()
       ),
     );
   }
