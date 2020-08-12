@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:components/providers/menu_provider.dart';
+import 'package:components/utils/icon_string_util.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -34,7 +35,7 @@ class HomePage extends StatelessWidget {
       return Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.android, color: Colors.blue,),
+            leading: getIcon(option['icon']),
             title: Text(option['texto']),
             trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue,),
             onTap: () {},
