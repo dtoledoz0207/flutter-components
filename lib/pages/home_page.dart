@@ -15,36 +15,54 @@ class HomePage extends StatelessWidget {
 
   Widget _list() {
 
-    menuProvider;
+    //menuProvider.loadData();
 
-    return ListView(
-      children: _items(),
+    return FutureBuilder(
+      future: menuProvider.loadData(),
+      // initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+        return ListView(
+          children: _items(snapshot.data),
+        );
+      },
     );
   }
 
-  List<Widget> _items() {
-    return [
-      ListTile(title: Text('Hello world')),
-      Divider(
-        thickness: 2.0,
-        color: Colors.blue[100],
-      ),
-      ListTile(title: Text('Hello world')),
-      Divider(
-        thickness: 2.0,
-        color: Colors.blue[100],
-      ),
-      ListTile(title: Text('Hello world')),
-      Divider(
-        thickness: 2.0,
-        color: Colors.blue[100],
-      ),
-      ListTile(title: Text('Hello world')),
-      Divider(
-        thickness: 2.0,
-        color: Colors.blue[100],
-      ),
-      ListTile(title: Text('Hello world'))
-    ];
+  List<Widget> _items(List<dynamic> data) {
+
+    final List<Widget> itemsWidgets = data.map((option) {
+      return Column(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.android, color: Colors.blue,),
+            title: Text(option['texto']),
+            trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue,),
+            onTap: () {},
+          ),
+          Divider(
+            thickness: 2.0,
+            color: Colors.blue[100],
+          )
+        ],
+      );
+    }).toList();
+
+    return itemsWidgets;
+
+    // *** OTHER WAY TO CREATE WIDGETS WITH A LIST OF ITEMS ***
+    /* final List<Widget> options = [];
+    data.forEach((opt) {
+      final widgetTemp = ListTile(
+        leading: Icon(Icons.android, color: Colors.blue,),
+            title: Text('${opt['texto']} **'),
+            trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue,),
+            onTap: () {},
+      );
+
+      options..add(widgetTemp)
+              ..add(Divider(thickness: 2.0, color: Colors.blue[100],));
+    });
+    return options; */
+
   }
 }
