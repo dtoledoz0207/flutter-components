@@ -41,9 +41,12 @@ class HomePage extends StatelessWidget {
             trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue,),
             onTap: () {
 
-              final route = MaterialPageRoute(builder: (context) => AlertPage());
+              // *** NAVIGATE TO ONLY ONE PAGE
+              /* final route = MaterialPageRoute(builder: (context) => AlertPage());
+              Navigator.push(context, route); */
 
-              Navigator.push(context, route);
+              Navigator.pushNamed(context, option['ruta']);
+
             },
           ),
           Divider(
