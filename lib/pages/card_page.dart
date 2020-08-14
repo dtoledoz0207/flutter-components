@@ -11,7 +11,9 @@ class CardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
-          _cardType1()
+          _cardType1(),
+          SizedBox(height: 30.0,),
+          _cardType2()
         ],
       ),
     );
@@ -38,6 +40,26 @@ class CardPage extends StatelessWidget {
                 onPressed: () {},
               )
             ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _cardType2() {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fadeInDuration: Duration(milliseconds: 300),
+            height: 250.0,
+            fit: BoxFit.cover,
+            image: NetworkImage('https://images3.alphacoders.com/997/997848.jpg')
+          ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text('Some example text'),
           )
         ],
       ),
