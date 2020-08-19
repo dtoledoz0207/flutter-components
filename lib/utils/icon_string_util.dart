@@ -6,7 +6,8 @@ final Map<String, IconData> _icons = {
   'folder_open': Icons.folder_open,
   'donut_large': Icons.donut_large,
   'input': Icons.input,
-  'tune': Icons.tune
+  'tune': Icons.tune,
+  'list': Icons.list
 };
 
 
