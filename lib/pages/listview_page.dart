@@ -49,7 +49,9 @@ class _ListViewPageState extends State<ListViewPage> {
   }
 
   Widget _createList() {
-    return ListView.builder(
+    return RefreshIndicator(
+      onRefresh: _getPage1,
+      child: ListView.builder(
       controller: _scrollController,
       itemCount: _listNumbers.length,
       itemBuilder: (BuildContext context, int index) {
@@ -62,7 +64,19 @@ class _ListViewPageState extends State<ListViewPage> {
           image: NetworkImage('https://picsum.photos/500/300/?image=$image')
         );
       }
+      ),
     );
+  }
+
+  Future _getPage1() async {
+    final duration = new Duration(seconds: 2);
+    new Timer(duration, () {
+      _listNumbers.clear();
+      _lastItem++;
+      _addTen();
+    });
+
+    return Future.delayed(duration);
   }
 
   void _addTen() {
